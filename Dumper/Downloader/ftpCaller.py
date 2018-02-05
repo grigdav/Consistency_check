@@ -1,26 +1,23 @@
 # -*- coding: utf-8 -*-
 # Модуль Ftp запроса
 
-from ftplib import FTP
+import pysftp
 
+def copy_file_to_server():     
+		# Создаем функцию копирования файлов с сервера по sftp запросу
+	cnopts = pysftp.CnOpts()
+	cnopts.hostkeys.load('.ssh/known_hosts')    
+		# Проверка ключ хоста. Так как сервера находятся в одной локальной сети, то и проверка ключа = None.
 
-from ftplib import FTP
+	with pysftp.Connection(host='10.31.1.132', username='ran.cc', password='!!ran.cc', cnopts=cnopts) as sftp:                      
+		# Создание подключения к серверу
 
-ftp  =  FTP ( 'ftp.cse.buffalo.edu' )      # подключение к хосту по ftb  
-ftp . login () 							   # login по умолчанию
-#ftp.dir('ubuntu')
-data = ftp.retrlines ('LIST')              # Извлечение списка файлов        
+		Get_file = sftp.get_d('/var/opt/ericsson/nms_umts_wran_bcg/files/export/cc', '/home/dave/XML_files', preserve_mtime=True)
+			#Копирование файлов. Местоназначение файлов на сервере, путь копирования на локальный сервер, проверка по времени.
 
-print(data)
+		sftp.close()
+			# Закрытие сессии
+		
 
-
-# Данные о сервере
-#ftp = FTP('ftp://10.31.1.132/') # пароль - !!ran.cc \ логин - ran.cc
-#ftp.login(user='ran.cc', passwd ='!!ran.cc')
-#ftp.connect(HOST, PORT)
-#ftp.login(user='ran.cc', passwd ='!!ran.cc')
-
-#data = ftp.retrlines('LIST')
-#message = ftp.getwelcome(" OK ")
-#print(message())
+copy_file_to_server()
 
