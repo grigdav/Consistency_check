@@ -2,11 +2,13 @@
 
 # Главный модуль, точка запуска.
 
+from Downloader.sftpCaller import copy_file_from_server
 
-
-#getter = newGetter ()        # Создание вызовов модулей
-#parser = newParser()
-#storer = newStorer()
+def start():
+	
+	getter = copy_file_from_server()        # Создание вызовов модулей
+	#parser = newParser()
+	#storer = newStorer()
 
 
 #XML = getter.get()           # Cхема передачи данных - в виде цепочки.
@@ -14,5 +16,5 @@
 #R = storer.store(DS)
 
 
-#if __name__ == '__main__':   # Структура запсука модуля
-#	main()
+if __name__ == '__main__':   # Структура запсука модуля
+	start()
