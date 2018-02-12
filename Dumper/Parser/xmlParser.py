@@ -1,30 +1,56 @@
 # наброски парсинга
 
 
-from lxml import etree, objectify
+#from lxml import etree, objectify
 
-def parseXML(xmlFile):
-    """Функция парсинга"""
-    with open(xmlFile) as f:
-        xml = f.read()
+import xml.etree.ElementTree as ET
+
+def node_Id_parser(xmlFile):
+    """Функция парсинга ID станции"""
+    with open('Ericsson.xml' , 'rt') as f:
+        #xml = f.read()
     
-    #tree = etree.Element(xml)
-    root = objectify.fromstring(xml)
+     tree = ET.parse(xmlFile)
+    
+     root = tree.getroot()
     
     # возвращаем атрибуты как словарь.
     #attrib = root.attrib
 
     
-    # в цикле выводим всю информацию про элементы (тэги и текст).
+        # в цикле выводим  информацию аттрибута root-а, - она будет ID строки в DB, так как содержит ID станции.
     for metaParent in root.getchildren():
         for secondparent in metaParent.getchildren():
             for thirdparent in secondparent.getchildren():
-                for firstchildren in thirdparent.getchildren():
-                    for secondchildren in firstchildren.getchildren():
-                        mainInfo = secondchildren.tag
-                        print('MeContext tag is - %s' %(mainInfo))
-                        for thirdchildren in secondchildren.getchildren():
-                            print(" NodeContext children tag and text is -%s => %s" % (thirdchildren.tag, thirdchildren.text))
+                for firstchildren in thirdparent.findall('.//{genericNrm.xsd}MeContext'):
+                    Id_info = firstchildren.attrib
+                    print(Id_info)
+
 
     
-parseXML('Ericsson.xml')
+node_Id_parser('Ericsson.xml')
+
+
+def node_Main_info_parser(xmlFile):  # Функция вывода main параметров Node 
+    with open('Ericsson.xml' , 'rt') as f:
+    
+    
+     tree = ET.parse(xmlFile)
+    
+     root = tree.getroot()
+
+    for metaParent in root.getchildren():
+        for secondparent in metaParent.getchildren():
+            for thirdparent in secondparent.getchildren():
+                for firstchildren in thirdparent.findall('.//'):
+                    Node_tag = firstchildren.tag
+                    Node_text = firstchildren.text
+                    #print(Node_tag)
+                    if Node_tag >= '{genericNrm.xsd} ':
+                        print('Node main tag is - %s , \n Node main param is -%s' % (Node_tag, Node_text))
+                    else: 
+                        print ('Other param')
+                   
+   
+
+node_Main_info_parser('Ericsson.xml')
