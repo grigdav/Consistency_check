@@ -20,23 +20,23 @@ class rootParser:
             # main list for ENodeBFunction data
             alarmTime_list = []
             for elem in self.root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataENodeBFunction'):
-                # create a list for data from this alarmTime element
+                # create a list for data from this vsDataENodeBFunction element
                 data = []
                 # loop over subelements
                 for subelem in elem:
                     #print('ENodeBFunction main tag is - %s' %(subelem.tag))
                     # add the subelement tag and text as a tuple
                     data.append((subelem.tag, ' - - - - -', subelem.text))
-                # add the set of data for this alarmTime element to the main list
+                # add the set of data for this vsDataENodeBFunction element to the main list
                 alarmTime_list.append(data)
-            print(alarmTime_list[0][1:10])
+            print(alarmTime_list[0][1:0])
         
         except IOError as error_out :
             print(error_out)        
 
 Node_info = rootParser()
-Node_info.Node_info_Parser()
-Node_info.ENodeBFunction_main_info_parser()
+#Node_info.Node_info_Parser()
+#Node_info.ENodeBFunction_main_info_parser()
 
 
 # ПЕРЕБОР НЕСКОЛЬКИХ XML Файлов
