@@ -1,56 +1,51 @@
-# наброски парсинга
-
-
-#from lxml import etree, objectify
-
 import xml.etree.ElementTree as ET
+import os 
 
-def node_Id_parser(xmlFile):
-    """Функция парсинга ID станции"""
-    with open('Ericsson.xml' , 'rt') as f:
-        #xml = f.read()
-    
-     tree = ET.parse(xmlFile)
-    
-     root = tree.getroot()
-    
-    # возвращаем атрибуты как словарь.
-    #attrib = root.attrib
+def ENodeBFunction_main_info_parser():
 
+    try:
+        path_to_file = '/home/dave/XML_files/Ericsson.xml'
+        files_list = os.path.abspath(path_to_file)
+        tree = ET.parse(files_list)
+        root = tree.getroot()
+        ns = {'second_info':'EricssonSpecificAttributes.17.28.xsd',
+            'main_info':"genericNrm.xsd"}
+
+        # main list for ENodeBFunction data
+        alarmTime_list = []
+        for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataENodeBFunction'):
+            # create a list for data from this alarmTime element
+            data = []
+            # loop over subelements
+            for subelem in elem:
+                #print('ENodeBFunction main tag is - %s' %(subelem.tag))
+                # add the subelement tag and text as a tuple
+                data.append((subelem.text))
+            # add the set of data for this alarmTime element to the main list
+            alarmTime_list.append(data)
+        return(alarmTime_list[0][1:7])
     
-        # в цикле выводим  информацию аттрибута root-а, - она будет ID строки в DB, так как содержит ID станции.
-    for metaParent in root.getchildren():
-        for secondparent in metaParent.getchildren():
-            for thirdparent in secondparent.getchildren():
-                for firstchildren in thirdparent.findall('.//{genericNrm.xsd}MeContext'):
-                    Id_info = firstchildren.attrib
-                    print(Id_info)
+    except IOError as e :
+        print(e)
+print(ENodeBFunction_main_info_parser())
 
+#path_to_file = '/home/dave/XML_files/'
 
-    
-node_Id_parser('Ericsson.xml')
+#XML_file = path_to_file + "/XML/"
+#files_list = os.listdir(path_to_file)
 
+#all_xml_files =[]
+#for file in files_list:
+    #all_xml_files.append(ENodeBFunction_main_info_parser(path_to_file + file))
 
-def node_Main_info_parser(xmlFile):  # Функция вывода main параметров Node 
-    with open('Ericsson.xml' , 'rt') as f:
-    
-    
-     tree = ET.parse(xmlFile)
-    
-     root = tree.getroot()
+#print('\n'.join(all_xml_files))
 
-    for metaParent in root.getchildren():
-        for secondparent in metaParent.getchildren():
-            for thirdparent in secondparent.getchildren():
-                for firstchildren in thirdparent.findall('.//'):
-                    Node_tag = firstchildren.tag
-                    Node_text = firstchildren.text
-                    #print(Node_tag)
-                    if Node_tag >= '{genericNrm.xsd} ':
-                        print('Node main tag is - %s , \n Node main param is -%s' % (Node_tag, Node_text))
-                    else: 
-                        print ('Other param')
-                   
-   
-
-node_Main_info_parser('Ericsson.xml')
+def EnodeBFunction_id_parser():
+    path_to_file = '/home/dave/XML_files/Ericsson.xml'
+    files_list = os.path.abspath(path_to_file)
+    tree = ET.parse(files_list)
+    root = tree.getroot()
+    for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
+        Id_info = firstchildren.attrib
+        print(Id_info)
+EnodeBFunction_id_parser()
