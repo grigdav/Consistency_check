@@ -22,3 +22,4 @@ def copy_file_from_server():
 		print('Function worked normal  ') 
 		
 
+copy_file_from_server()
