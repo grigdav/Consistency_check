@@ -27,7 +27,8 @@ def run():
     parser = xmlParser.XMLParser(  config['PARSER']['PathToXML']
                                 )
     #downloader.download()
-    parser.Node_info_Parser()
+    #parser.Node_info_Parser()
+    parser.ENodeBFunction_main_info_parser()
     # К этому моменту XML с сервера уже скачан и уже лежит по пути SaveTo.
 
     # parseXML()
