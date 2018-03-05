@@ -1,20 +1,33 @@
 # -*- coding: utf-8 -*-
+# Главный модуль проекта.
 
-# Главный модуль, точка запуска.
+# Библиотека для работы с конфигурационным файлом.
+import configparser
 
-from Downloader.sftpCaller import copy_file_from_server
-from Parser import xmlParser 
+from Downloader import Downloader
 
-def start():
-	
-	copy_file_from_server()        # Создание вызовов модулей
-	#parseXML()
+#from Parser import xmlParser 
 
+def run():
+    # Читаем конфигурационный файл (проверяя возможные проблемы)
+    try:
+        config = configparser.ConfigParser()
+        config.read('Configs/dumper.ini') # Подразумевается, что путь к конфигу читается из аргумента командной строки.
+    except Exception:
+        print('Cannot read configuration file, fault!')
+        raise SystemExit
 
-#XML = getter.get()           # Cхема передачи данных - в виде цепочки.
-#DS = parser.parse(XML)
-#R = storer.store(DS)
+    downloader = Downloader.Downloader(   config['DOWNLOADER']['IPv4']
+                                        , config['DOWNLOADER']['Login']
+                                        , config['DOWNLOADER']['Password']
+                                        , config['DOWNLOADER']['PathToSshKey']
+                                        , config['DOWNLOADER']['PathToRemoteXML']
+                                        , config['DOWNLOADER']['SaveTo']
+                                      )
+    downloader.download()
+    # К этому моменту XML с сервера уже скачан и уже лежит по пути SaveTo.
 
+    # parseXML()
 
-if __name__ == '__main__':   # Структура запсука модуля
-	start()
+if __name__ == '__main__':
+    run()
