@@ -1,19 +1,24 @@
+# Модуль Парсинга
 
+#Импорт библиотеки для распарсивания
 import xml.etree.ElementTree as ET
 import os 
 
-class rootParser:
-    """docstring for rootParser"""
-    path_to_file = '/home/dave/XML_files/Ericsson_ful.xml'
-    files_list = os.path.abspath(path_to_file)
-    tree = ET.parse(files_list)
-    root = tree.getroot()
+class XMLParser:
+    def __init__(self, pathToXML):
+        self._pathToXML = pathToXML
 
     def Node_info_Parser(self):
-        for firstchildren in self.root.findall('.//{genericNrm.xsd}MeContext'):
-            Id_info = firstchildren.attrib
-            print('%s' %(Id_info))
-
+        files_list = os.path.abspath(self._pathToXML)
+        tree = ET.parse(files_list)
+        root = tree.getroot()
+        try:
+            for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
+                Id_info = firstchildren.attrib
+                print('%s' %(Id_info))
+        except Exception:
+            print('Unable parse XML file - please check Node_info_Parser - function.')
+            raise SystemExit
 
     def ENodeBFunction_main_info_parser(self):
         try:
@@ -38,20 +43,3 @@ class rootParser:
         
         except IOError as error_out :
             print(error_out)        
-
-Node_info = rootParser()
-Node_info.Node_info_Parser()
-#Node_info.ENodeBFunction_main_info_parser()
-
-
-# ПЕРЕБОР НЕСКОЛЬКИХ XML Файлов
-#path_to_file = '/home/dave/XML_files/'
-
-#XML_file = path_to_file + "/XML/"
-#files_list = os.listdir(path_to_file)
-
-#all_xml_files =[]
-#for file in files_list:
-    #all_xml_files.append(ENodeBFunction_main_info_parser(path_to_file + file))
-
-#print('\n'.join(all_xml_files))

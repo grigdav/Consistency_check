@@ -3,16 +3,15 @@
 
 # Библиотека для работы с конфигурационным файлом.
 import configparser
-
+# Модули для работы
 from Downloader import Downloader
-
-#from Parser import xmlParser 
+from Parser import xmlParser 
 
 def run():
     # Читаем конфигурационный файл (проверяя возможные проблемы)
     try:
         config = configparser.ConfigParser()
-        config.read('Configs/dumper.ini') # Подразумевается, что путь к конфигу читается из аргумента командной строки.
+        config.read('Configs/dumper.ini')              # Подразумевается, что путь к конфигу читается из аргумента командной строки.
     except Exception:
         print('Cannot read configuration file, fault!')
         raise SystemExit
@@ -24,7 +23,11 @@ def run():
                                         , config['DOWNLOADER']['PathToRemoteXML']
                                         , config['DOWNLOADER']['SaveTo']
                                       )
-    downloader.download()
+
+    parser = xmlParser.XMLParser(  config['PARSER']['PathToXML']
+                                )
+    #downloader.download()
+    parser.Node_info_Parser()
     # К этому моменту XML с сервера уже скачан и уже лежит по пути SaveTo.
 
     # parseXML()
