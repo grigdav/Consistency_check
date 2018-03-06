@@ -24,7 +24,7 @@ def run():
                                         , config['DOWNLOADER']['SaveTo']
                                       )
 
-    parser = xmlParser.XMLParser(  config['PARSER']['PathToXML']
+    parser = xmlParser.XMLParser(         config['PARSER']['PathToXML']
                                 )
     #downloader.download()
     #parser.Node_info_Parser()

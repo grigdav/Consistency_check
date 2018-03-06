@@ -37,6 +37,7 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            print(node_param_list)
+            #print(node_param_list)
+            print('  \n'.join(str(value) for value in node_param_list))
         except IOError as error_out :
             print(error_out)        
