@@ -6,6 +6,7 @@ import configparser
 # Модули для работы
 from Downloader import Downloader
 from Parser import xmlParser 
+from Importer import db_importer
 
 def run():
     # Читаем конфигурационный файл (проверяя возможные проблемы)
@@ -26,12 +27,17 @@ def run():
 
     parser = xmlParser.XMLParser(         config['PARSER']['PathToXML']
                                 )
-    #downloader.download()
-    #parser.Node_info_Parser()
-    parser.ENodeBFunction_main_info_parser()
-    # К этому моменту XML с сервера уже скачан и уже лежит по пути SaveTo.
 
-    # parseXML()
+    imp_er = db_importer.Importer(        config['IMPORTER']['DbUser']
+                                 ,        config['IMPORTER']['DbPassword']
+                                 ,        config['IMPORTER']['Host']
+                                 ,        config['IMPORTER']['Database']
+                                 ,        config['IMPORTER']['Charset']
+                                )
+    downloader.download()
+    parser.Node_info_Parser()
+    parser.ENodeBFunction_main_info_parser()
+    imp_er.Connector()
 
 if __name__ == '__main__':
     run()
