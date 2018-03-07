@@ -23,6 +23,9 @@ pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
 
 Версия `pip3` может быть более новой, это хорошо.
 
+Также необходимо загрузить :
+```sudo pip3 install mysql-connector```
+
 ## Обзор структуры проекта
 
 * `Configs` - папка с конфигами проекта.
