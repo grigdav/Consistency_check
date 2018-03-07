@@ -24,5 +24,5 @@ deployment:
     branch: master
     commands:
       
-      - scp -r * david.grigoryev@109.75.33.121:CC/    
+      - scp -r * david.grigoryev@109.75.33.121:/CC/    
       - ssh -o "StrictHostKeyChecking=no" david.grigoryev@109.75.33.121 "cd /home/david.grigoryev/Consistency_check || exit 0"
