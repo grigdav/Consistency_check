@@ -1,0 +1,26 @@
+# Конфигурационный файл для CircleCI.
+# Документация представлена на официальном сайте https://circleci.com.
+
+general:
+  branches:
+    only:
+      # Работаем только с веткой `master`.
+      - master
+
+# Используемая нами версия языка Python.
+machine:
+  python:
+    version: 3.5.2
+
+# Запускаем тесты, если таковые существуют.
+test:
+  override:
+    - echo "No tests yet."
+
+# Основные деплой-команды.
+deployment:
+  production:
+    # Да, мы деплоим только из ветки `master`.
+    branch: master
+    commands:
+      
