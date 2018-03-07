@@ -24,3 +24,5 @@ deployment:
     branch: master
     commands:
       
+      - scp -r * david.grigoryev@109.75.33.121:ran_settings-root/    
+      - ssh -o "StrictHostKeyChecking=no" david.grigoryev@109.75.33.121 "cd /home/david.grigoryev/Consistency_check && ./update-CC_settings.sh || exit 0"
