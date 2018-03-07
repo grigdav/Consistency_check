@@ -34,10 +34,11 @@ def run():
                                  ,        config['IMPORTER']['Database']
                                  ,        config['IMPORTER']['Charset']
                                 )
-    downloader.download()
+    #downloader.download()
     parser.Node_info_Parser()
     parser.ENodeBFunction_main_info_parser()
-    imp_er.Connector()
+    imp_er.ConnectChecker()
+    imp_er.NodeInfoImporter()
 
 if __name__ == '__main__':
     run()

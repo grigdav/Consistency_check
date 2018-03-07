@@ -14,9 +14,16 @@ class XMLParser:
         tree = ET.parse(files_list)
         root = tree.getroot()
         try:
+            #Записываем вывод в файл
+            Write = open('out.txt', 'w')
+            #Создаем список
+            node_id_list =[]
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
-                Id_info = firstchildren.attrib
-                print('%s' %(Id_info))
+                node_id_list.append(firstchildren.attrib)
+            # Выводим построчный вывод
+            Write.write(',\n'.join(str(value) for value in node_id_list))
+            Write.close()
+            print('Node ID parsed - normal')
         except Exception:
             print('Unable parse XML file - please check Node_info_Parser - function.')
             raise SystemExit
@@ -37,7 +44,6 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            #print(node_param_list)
-            print('  \n'.join(str(value) for value in node_param_list))
+            return('\n'.join(str(value) for value in node_param_list))
         except IOError as error_out :
             print(error_out)        

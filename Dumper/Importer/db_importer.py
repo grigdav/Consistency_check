@@ -1,24 +1,27 @@
 
 import mysql.connector
 from mysql.connector import errorcode
+import configparser
+
 
 class Importer:
-    def __init__(self, dbuser, dbpassword, host, database, charset,): 
+    def __init__(self, dbuser, dbpassword, host, database, charset): 
         self._dbuser              = dbuser
         self._dbpassword          = dbpassword
         self._host                = host 
         self._database            = database
         self._charset             = charset      
 
-    def Connector(self):
+    def ConnectChecker(self):
         try:
-          cnx = mysql.connector.connect( user       = self._dbuser
+          cnt = mysql.connector.connect( user       = self._dbuser
                                         ,password   = self._dbpassword
                                         ,host       = self._host
                                         ,database   = self._database
                                         ,use_pure   = False
                                         )
-          print('Connect to Data base')
+          print('Successful connect to Data base')
+          return(cnt)
         except mysql.connector.Error as err:
           if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -26,7 +29,30 @@ class Importer:
             print("Database does not exist")
           else:
             print(err)
-        else:
-          cnx.close()
-                  
+        finally:
+          cnt.close()
 
+    def NodeInfoImporter(self):
+        cnt = mysql.connector.connect( user       = self._dbuser
+                                      ,password   = self._dbpassword
+                                      ,host       = self._host
+                                      ,database   = self._database
+                                      ,use_pure   = False
+                                      )
+        cursor = cnt.cursor()
+        try:
+          info = {  'file' : '/home/dave/Consistency_check/Dumper/out.txt'
+                  , 'table' : 't_f4ge_enodeb_m'
+          }
+          dm = '''LOAD DATA LOCAL INFILE '%(file)s'  
+                  INTO TABLE %(table)s 
+                ''' 
+          query = dm % info 
+          cursor.execute(query)
+          cnt.commit()
+          print('Successful import to Data base')
+        except Exception:
+            print('You have a problem with Import - please check NodeInfoImporter')
+            raise SystemExit 
+        finally:
+          cnt.close()
