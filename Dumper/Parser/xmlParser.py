@@ -21,7 +21,7 @@ class XMLParser:
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
                 node_id_list.append(firstchildren.attrib)
             # Выводим построчный вывод
-            Write.write(',\n'.join(str(value) for value in node_id_list))
+            Write.write('\n'.join(str(value) for value in node_id_list))
             Write.close()
             print('Node ID parsed - normal')
         except Exception:
@@ -47,3 +47,4 @@ class XMLParser:
             return('\n'.join(str(value) for value in node_param_list))
         except IOError as error_out :
             print(error_out)        
+
