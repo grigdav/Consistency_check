@@ -25,4 +25,4 @@ deployment:
     commands:
       
       - scp -r * david.grigoryev@109.75.33.121:ran_settings-root/    
-      #- ssh -o "StrictHostKeyChecking=no" david.grigoryev@109.75.33.121 "cd /home/david.grigoryev/Consistency_check && ./update-CC.sh || exit 0"
+      - ssh -o "StrictHostKeyChecking=no" david.grigoryev@109.75.33.121 "cd /home/david.grigoryev/Consistency_check && ./update-CC.sh || exit 0"
