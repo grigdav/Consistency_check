@@ -48,7 +48,7 @@ class Importer:
           dm = '''LOAD DATA LOCAL INFILE '%(file)s' 
                   INTO TABLE %(table)s 
                   FIELDS TERMINATED BY ","
-                  LINES TERMINATED BY '\r\n-'
+                  LINES TERMINATED BY '\r\n'
                 '''
           query = dm % info 
           cursor.execute(query)
