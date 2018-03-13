@@ -35,7 +35,7 @@ class XMLParser:
         root = tree.getroot()
         try:
             # Создаем список с данными станци.
-            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.txt', 'w')
+            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', 'w')
             node_param_list=[]
             for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataENodeBFunction'):
                 # создаем список элементов vsDataENodeBFunction.
@@ -52,8 +52,12 @@ class XMLParser:
         except IOError as error_out :
             print(error_out)        
 
-    #def CsvMerger(self):
-        #try:
-           # open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv)
+    def CsvMerger(self):
+            with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', newline='') as ENodeBFunction:
+                read=csv.reader(ENodeBFunction, delimiter=' ', quotechar=',' )
+                for row in read:
+                    print('---'.join(row[0:1]))      
+
+
 
 

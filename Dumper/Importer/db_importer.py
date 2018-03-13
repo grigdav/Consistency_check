@@ -41,7 +41,7 @@ class Importer:
                                       )
         cursor = cnt.cursor()
         try:
-          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.txt'
+          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
                   , 'table' : 't_f4ge_enodeb_m'
                   , 'except' : 'field_enodeb_stnNodes'
           }

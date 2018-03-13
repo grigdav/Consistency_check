@@ -36,7 +36,8 @@ def run():
                                 )
     #downloader.download()
     #parser.Node_info_Parser()
-    parser.ENodeBFunction_main_info_parser()
+    #parser.ENodeBFunction_main_info_parser()
+    parser.CsvMerger()
     imp_er.ConnectChecker()
     imp_er.NodeInfoImporter()
 
