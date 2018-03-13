@@ -35,7 +35,7 @@ def run():
                                  ,        config['IMPORTER']['Charset']
                                 )
     #downloader.download()
-    parser.Node_info_Parser()
+    #parser.Node_info_Parser()
     parser.ENodeBFunction_main_info_parser()
     imp_er.ConnectChecker()
     imp_er.NodeInfoImporter()

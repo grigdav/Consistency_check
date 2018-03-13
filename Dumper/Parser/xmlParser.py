@@ -3,6 +3,7 @@
 #Импорт библиотеки для распарсивания
 import xml.etree.ElementTree as ET
 import os 
+import csv
 
 class XMLParser:
     def __init__(self, pathToXML):
@@ -15,7 +16,7 @@ class XMLParser:
         root = tree.getroot()
         try:
             #Записываем вывод в файл
-            Write = open('out.txt', 'w')
+            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w')
             #Создаем список
             node_id_list =[]
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
@@ -34,6 +35,7 @@ class XMLParser:
         root = tree.getroot()
         try:
             # Создаем список с данными станци.
+            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.txt', 'w')
             node_param_list=[]
             for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataENodeBFunction'):
                 # создаем список элементов vsDataENodeBFunction.
@@ -44,7 +46,14 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            return('\n'.join(str(value) for value in node_param_list))
+            Write.write('\n-'.join(str(value) for value in node_param_list))
+            Write.close()
+            print('ENodeBFunction parameters parsed - normal')
         except IOError as error_out :
             print(error_out)        
+
+    #def CsvMerger(self):
+        #try:
+           # open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv)
+
 
