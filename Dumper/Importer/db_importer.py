@@ -41,14 +41,12 @@ class Importer:
                                       )
         cursor = cnt.cursor()
         try:
-          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
-                  , 'table' : 't_f4ge_enodeb_m'
+          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv'
+                  , 'table' : 'Dumper_enodebfunction'
                   , 'except' : 'field_enodeb_stnNodes'
           }
           dm = '''LOAD DATA LOCAL INFILE '%(file)s' 
                   INTO TABLE %(table)s 
-                  FIELDS TERMINATED BY ","
-                  LINES TERMINATED BY '\r\n'
                 '''
           query = dm % info 
           cursor.execute(query)
