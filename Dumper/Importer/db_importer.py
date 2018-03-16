@@ -43,7 +43,6 @@ class Importer:
         try:
           info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv'
                   , 'table' : 'Dumper_enodebfunction'
-                  , 'except' : 'field_enodeb_stnNodes'
           }
           dm = '''LOAD DATA LOCAL INFILE '%(file)s' 
                   INTO TABLE %(table)s 
