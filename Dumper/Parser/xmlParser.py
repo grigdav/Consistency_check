@@ -53,11 +53,7 @@ class XMLParser:
             print(error_out)        
 
     def CsvMerger(self):
-            with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', newline='') as ENodeBFunction:
-                read=csv.reader(ENodeBFunction, delimiter=' ', quotechar=',' )
-                for row in read:
-                    print('---'.join(row[0:1]))      
-
-
-
+            with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', 'a', newline='') as ENodeBFunction:
+                read=csv.writer(ENodeBFunction, delimiter=' ', quotechar=',' ,quoting=csv.QUOTE_MINIMAL )
+                read.writerow(['DAV'] * 5)
 

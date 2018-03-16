@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #!/usr/bin/env python3
 
 # Модули для работы
@@ -37,13 +39,13 @@ def run():
                                  ,        config['IMPORTER']['Database']
                                  ,        config['IMPORTER']['Charset']
                                  )
+    
     #downloader.download()
     #parser.Node_info_Parser()
     #parser.ENodeBFunction_main_info_parser()
-    #parser.CsvMerger()
-    return(imp_er.ConnectChecker())
-    return(imp_er.NodeInfoImporter())
-
+    parser.CsvMerger()
+    imp_er.ConnectChecker()
+    imp_er.NodeInfoImporter()
 
 if __name__ == "__main__":
 
