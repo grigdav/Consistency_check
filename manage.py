@@ -45,7 +45,7 @@ def run():
     #parser.ENodeBFunction_main_info_parser()
     parser.CsvMerger()
     imp_er.ConnectChecker()
-    imp_er.NodeInfoImporter()
+    #imp_er.NodeInfoImporter()
 
 if __name__ == "__main__":
 
