@@ -16,18 +16,34 @@ class XMLParser:
         root = tree.getroot()
         try:
             #Записываем вывод в файл
-            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w')
+            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w') 
             #Создаем список
+            fieldnames = ['Node_id-header' , 'Node_parametrs-header']
             node_id_list =[]
+            writer = csv.DictWriter(Write , fieldnames=fieldnames)
+
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
                 node_id_list.append(firstchildren.attrib)
-            # Выводим построчный вывод
-            Write.write('\n'.join(str(value) for value in node_id_list))
-            Write.close()
+                # Выводим построчный вывод
+
+            writer.writeheader()
+            writer.writerow({ 'Node_id-header' : node_id_list , 'Node_parametrs-header' : 'One world'})
+            print('Merge Normal - worked')
+
             print('Node ID parsed - normal')
         except Exception:
             print('Unable parse XML file - please check Node_info_Parser - function.')
             raise SystemExit
+
+    def CsvMerger(self):
+        with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node.csv', 'a') as ENodeBFunction:
+            fieldnames = ['Node_id-header' , 'Node_parametrs-header']
+            list_1 = ['someItem1', 'someitem2']
+            writer = csv.DictWriter(ENodeBFunction , fieldnames=fieldnames)
+
+            writer.writeheader()
+            writer.writerow({ 'Node_id-header' : list_1 , 'Node_parametrs-header' : 'One world'})
+            print('Normal - worked')
 
     def ENodeBFunction_main_info_parser(self):
         files_list = os.path.abspath(self._pathToXML)
@@ -46,18 +62,11 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            Write.write('\n'.join(str(value) for value in node_param_list))
+            Write.write(', \n'.join(str(value) for value in node_param_list))
             Write.close()
             print('ENodeBFunction parameters parsed - normal')
         except IOError as error_out :
             print(error_out)        
 
-    def CsvMerger(self):
-            with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node.csv', 'w') as ENodeBFunction:
-                fieldnames = ['first' , 'second']
-                writer = csv.DictWriter(ENodeBFunction , fieldnames=fieldnames)
 
-                writer.writeheader()
-                writer.writerow({ 'first' : ['21sdf' , 'fss'] , 'second' : 'One world'})
-                print('Normal - worked')
 
