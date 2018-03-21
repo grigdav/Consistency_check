@@ -25,8 +25,8 @@ class XMLParser:
             current_node_id = firstchildren.attrib
             simplified_node_id = current_node_id.get('id')
             node_id_list.append(simplified_node_id)
-                # Выводим построчный вывод
-
+        
+        # Выводим построчный вывод
         Write.write('\n'.join(str(value) for value in node_id_list))
         Write.close()
 
@@ -83,11 +83,31 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            Write.write(', \n'.join(str(value) for value in node_param_list))
+            Write.write('\n'.join(str(value) for value in node_param_list))
             Write.close()
             print('ENodeBFunction parameters parsed - normal')
         except IOError as error_out :
             print(error_out)        
 
-
-
+    def AdmissionControll_parser(self):
+        files_list = os.path.abspath(self._pathToXML)
+        tree = ET.parse(files_list)
+        root = tree.getroot()
+        try:
+            # Создаем список с данными станци.
+            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/AdmissionControll.csv', 'w', newline='')
+            admission_controll_param_list=[]
+            for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataAdmissionControl'):
+                # создаем список элементов vsDataENodeBFunction.
+                admission_param =[]
+                # спускаемся на уровень ниже
+                for subelem in elem:
+                    # добавляем полученную информацию в список
+                    admission_param.append(subelem.text)
+                #  и добавляем весь полученный список в главный список  (так как параметров в этом списке у нас будет много). 
+                admission_controll_param_list.append(admission_param)
+            Write.write('\n'.join(str(value) for value in admission_controll_param_list))
+            Write.close()
+            print('DataAdmissionControl parameters parsed - normal')
+        except IOError as error_out :
+            print(error_out) 
