@@ -14,36 +14,57 @@ class XMLParser:
         files_list = os.path.abspath(self._pathToXML)
         tree = ET.parse(files_list)
         root = tree.getroot()
-        try:
             #Записываем вывод в файл
-            Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w') 
+        Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w') 
             #Создаем список
-            fieldnames = ['Node_id-header' , 'Node_parametrs-header']
-            node_id_list =[]
-            writer = csv.DictWriter(Write , fieldnames=fieldnames)
+        fieldnames = ['Node_id-header' , 'Node_parametrs-header']
+        node_id_list =[]
+        writer = csv.DictWriter(Write , fieldnames=fieldnames)
 
-            for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
-                node_id_list.append(firstchildren.attrib)
+        for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
+            current_node_id = firstchildren.attrib
+            simplified_node_id = current_node_id.get('id')
+            node_id_list.append(simplified_node_id)
                 # Выводим построчный вывод
 
-            writer.writeheader()
-            writer.writerow({ 'Node_id-header' : node_id_list , 'Node_parametrs-header' : 'One world'})
-            print('Merge Normal - worked')
+        Write.write('\n'.join(str(value) for value in node_id_list))
+        Write.close()
 
-            print('Node ID parsed - normal')
-        except Exception:
-            print('Unable parse XML file - please check Node_info_Parser - function.')
-            raise SystemExit
+        print('Node ID parsed - normal')
 
-    def CsvMerger(self):
-        with open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node.csv', 'a') as ENodeBFunction:
-            fieldnames = ['Node_id-header' , 'Node_parametrs-header']
-            list_1 = ['someItem1', 'someitem2']
-            writer = csv.DictWriter(ENodeBFunction , fieldnames=fieldnames)
+    '''def CsvMerger(self):
+        csvWithNodeIds = open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'r', newline='')        
+        csvWithENodeBFunctions = open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', 'r', newline='')
 
-            writer.writeheader()
-            writer.writerow({ 'Node_id-header' : list_1 , 'Node_parametrs-header' : 'One world'})
-            print('Normal - worked')
+        nodeIds = csv.reader(csvWithNodeIds)
+        eNodeBFunctions = csv.reader(csvWithENodeBFunctions)
+
+        # Мы точно знаем что количество строк в nodeIds совпадает с количеством строк в eNodeBFunctions
+        listForNodeIds = []
+        listForENodeBFunctions = []
+
+        # Превращаем первый дикт из первого CSV в список айдишников
+         for rowIndex1, nodeIdRow in enumerate(nodeIds, start=0):   # default is zero
+            for key1, nodeId in nodeIdRow.iteritems():
+                listForNodeIds.append([nodeId])
+        
+        # Превращем второй дикт из второго CSV в список пар ключ-значение
+        # где ключ - имя столбца а значение - это значение в данном столбце в этой строке
+        # Получаем список списков
+        for rowIndex2, eNodeBFunctionsRow in enumerate(eNodeBFunctions, start=0):   # default is zero
+            l = []
+            for key2, eNodeBFun in eNodeBFunctionsRow.iteritems():
+                l.append((key2, eNodeBFun))
+            listForENodeBFunctions.append(l)
+
+        # Бежим по второму списку списков чтобы добавить айдишники в начало соответствующего списка-элемента
+        # в итоге получаем список списков с полными данными
+        for ind, listForOneRow in enumerate(listForENodeBFunctions, start=0):   # default is zero
+            listForOneRow.insert(0, ('Node_id-header', listForNodeIds[ind]))
+
+        # превращаем тот список списков в дикт
+        ourFinalDict = listForENodeBFunctions to dict
+        writeThirdCSVFrom ourFinalDict '''        
 
     def ENodeBFunction_main_info_parser(self):
         files_list = os.path.abspath(self._pathToXML)
