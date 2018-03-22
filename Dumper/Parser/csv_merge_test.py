@@ -62,16 +62,31 @@ with open('dict_output.csv', 'a', newline='') as csv_file:
         writer.writerow({'first_name': data, 'last_name': item2 })'''
 import itertools
 
-rows = [1,2,3]
+'''rows = [1,2,3]
 cols =  [['a', 'b'],['c','d'],['e', 'f']]
 #flattened = [[cell for cell in row] for row in cols]
 
 #my_dict = [row for row in enumerate( cols, start=0)]
 #transposed = [ l for l in (rows, cols)]
-#my_dict = [ [row , cols] for row in rows for col in cols]
+my_dict = [ l  for row in rows for col in cols for l in itertools.chain([row, col])]
 
-d1 = [ [ind].append(rows) for ind in enumerate(cols, start=0)]
-
-print(d1)
+print(my_dict)'''
 
 #print('\n'.join(str(value) for value in flattened))
+
+rows = [1,2,3]
+cols =  [['a', 'b'],['c','d'],['e', 'f']]
+
+matrix = [ rows,
+           cols
+          ]
+
+transposed = []
+for i in range(len(matrix[0])):
+    new_row = []
+    for row in matrix:
+        new_row.append(row[i])
+    transposed.append(new_row)
+for main in transposed:
+
+    print(main)

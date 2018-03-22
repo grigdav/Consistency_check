@@ -41,11 +41,12 @@ class Importer:
                                       )
         cursor = cnt.cursor()
         try:
-          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv'
+          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
                   , 'table' : 'Dumper_enodebfunction'
           }
           dm = '''LOAD DATA LOCAL INFILE '%(file)s' 
                   INTO TABLE %(table)s 
+                  FIELDS TERMINATED BY ','
                 '''
           query = dm % info 
           cursor.execute(query)

@@ -74,6 +74,15 @@ class XMLParser:
             # Создаем список с данными станци.
             Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', 'w', newline='')
             node_param_list=[]
+            node_id_list =[]
+            matrix = [  node_id_list,
+                        node_param_list
+                        ]
+            for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
+                current_node_id = firstchildren.attrib
+                simplified_node_id = current_node_id.get('id')
+                node_id_list.append(simplified_node_id)
+
             for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataENodeBFunction'):
                 # создаем список элементов vsDataENodeBFunction.
                 node_param =[]
@@ -83,7 +92,15 @@ class XMLParser:
                     node_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список vsDataENodeBFunction (так как параметров в этом списке у нас будет много). 
                 node_param_list.append(node_param)
-            Write.write('\n'.join(str(value) for value in node_param_list))
+
+            transposed = []
+            for i in range(len(matrix[0])):
+                new_row = []
+                for row in matrix:
+                    new_row.append(row[i])
+                transposed.append(new_row)
+
+            Write.write('\n'.join(str(value) for value in transposed))
             Write.close()
             print('ENodeBFunction parameters parsed - normal')
         except IOError as error_out :
