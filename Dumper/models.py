@@ -11,76 +11,76 @@ from django.db import models
 
 
 class ENodeBFunction(models.Model):
-    field_enodeb_id = models.CharField("Station ID", primary_key=True, max_length=45)
-    field_enodeb_stnnodes = models.CharField(db_column='field_enodeb_stnNodes', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
-    field_enodeb_tcunodes = models.CharField(db_column='field_enodeb_tcuNodes', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
-    field_enodeb_nnsfmode = models.CharField(db_column='field_enodeb_nnsfMode', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
-    field_enodeb_timephasemaxdeviation = models.CharField(db_column='field_enodeb_timePhaseMaxDeviation', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
-    field_enodeb_forcedsitunnelingactive = models.CharField(db_column='field_enodeb_forcedSiTunnelingActive', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_pwspersistentstorage = models.CharField(db_column='field_enodeb_pwsPersistentStorage', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2whitelist = models.CharField(db_column='field_enodeb_x2WhiteList', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_upipaddressref = models.CharField(db_column='field_enodeb_upIpAddressRef', max_length=191, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary9 = models.CharField(db_column='field_enodeb_zzzTemporary9', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_enodebplmnid = models.CharField(db_column='field_enodeb_eNodeBPlmnId', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary7 = models.CharField(db_column='field_enodeb_zzzTemporary7', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_dscplabel = models.CharField(db_column='field_enodeb_dscpLabel', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary8 = models.CharField(db_column='field_enodeb_zzzTemporary8', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_userlabel = models.CharField(db_column='field_enodeb_userLabel', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_rrcconnreestactive = models.CharField(db_column='field_enodeb_rrcConnReestActive', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary21 = models.CharField(db_column='field_enodeb_zzzTemporary21', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary22 = models.CharField(db_column='field_enodeb_zzzTemporary22', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2retrytimerstart = models.CharField(db_column='field_enodeb_x2retryTimerStart', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary25 = models.CharField(db_column='field_enodeb_zzzTemporary25', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary26 = models.CharField(db_column='field_enodeb_zzzTemporary26', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary23 = models.CharField(db_column='field_enodeb_zzzTemporary23', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary24 = models.CharField(db_column='field_enodeb_zzzTemporary24', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2setuptwowayrelations = models.CharField(db_column='field_enodeb_x2SetupTwoWayRelations', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_liccapdistrmethod = models.CharField(db_column='field_enodeb_licCapDistrMethod', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_timeandphasesynchcritical = models.CharField(db_column='field_enodeb_timeAndPhaseSynchCritical', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_ulschedulerdynamicbwallocationenabled = models.CharField(db_column='field_enodeb_ulSchedulerDynamicBWAllocationEnabled', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary2 = models.CharField(db_column='field_enodeb_zzzTemporary2', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary1 = models.CharField(db_column='field_enodeb_zzzTemporary1', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary3 = models.CharField(db_column='field_enodeb_zzzTemporary3', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary6 = models.CharField(db_column='field_enodeb_zzzTemporary6', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary10 = models.CharField(db_column='field_enodeb_zzzTemporary10', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_s1retrytimer = models.CharField(db_column='field_enodeb_s1RetryTimer', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary5 = models.CharField(db_column='field_enodeb_zzzTemporary5', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary11 = models.CharField(db_column='field_enodeb_zzzTemporary11', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary12 = models.CharField(db_column='field_enodeb_zzzTemporary12', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary13 = models.CharField(db_column='field_enodeb_zzzTemporary13', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_randupdateinterval = models.CharField(db_column='field_enodeb_randUpdateInterval', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2ipaddrvias1active = models.CharField(db_column='field_enodeb_x2IpAddrViaS1Active', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary16 = models.CharField(db_column='field_enodeb_zzzTemporary16', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_zzztemporary18 = models.CharField(db_column='field_enodeb_zzzTemporary18', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_maxrandc = models.CharField(db_column='field_enodeb_maxRandc', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_sctpref = models.CharField(db_column='field_enodeb_sctpRef', max_length=191, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_minrandc = models.CharField(db_column='field_enodeb_minRandc', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_s1hodirdatapathavail = models.CharField(db_column='field_enodeb_s1HODirDataPathAvail', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_mfbisupport = models.CharField(db_column='field_enodeb_mfbiSupport', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_dnslookupontai = models.CharField(db_column='field_enodeb_dnsLookupOnTai', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_dnslookuptimer = models.CharField(db_column='field_enodeb_dnsLookupTimer', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2blacklist = models.CharField(db_column='field_enodeb_x2BlackList', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_initpreschedulingenable = models.CharField(db_column='field_enodeb_initPreschedulingEnable', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_toutgoinghoexeccdma1xrtt = models.CharField(db_column='field_enodeb_tOutgoingHoExecCdma1xRtt', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_csfbmeasfromidlemode = models.CharField(db_column='field_enodeb_csfbMeasFromIdleMode', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_enbid = models.CharField(db_column='field_enodeb_eNBId', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_x2retrytimermaxauto = models.CharField(db_column='field_enodeb_x2retryTimerMaxAuto', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_biasthpwifimobility = models.CharField(db_column='field_enodeb_biasThpWifiMobility', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_releaseinactiveuesmploadlevel = models.CharField(db_column='field_enodeb_releaseInactiveUesMpLoadLevel', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_dnsselections1x2ref = models.CharField(db_column='field_enodeb_dnsSelectionS1X2Ref', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_ts1hocanceltimer_field = models.CharField(db_column="field_enodeb_tS1HoCancelTimer'", max_length=45, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    field_enodeb_combcellsectorselectthreshrx = models.CharField(db_column='field_enodeb_combCellSectorSelectThreshRx', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_combcellsectorselectthreshtx = models.CharField(db_column='field_enodeb_combCellSectorSelectThreshTx', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_releaseinactiveuesinacttime = models.CharField(db_column='field_enodeb_releaseInactiveUesInactTime', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_plmnbordernode = models.CharField(db_column='field_enodeb_plmnBorderNode', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_timephasemaxdeviationmbms = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationMbms', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_timephasemaxdeviationotdoa = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationOtdoa', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_liculbbpercentileconf = models.CharField(db_column='field_enodeb_licUlBbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_liculprbpercentileconf = models.CharField(db_column='field_enodeb_licUlPrbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_release = models.CharField(max_length=45, blank=True, null=True)
-    field_enodeb_licdlprbpercentileconf = models.CharField(db_column='field_enodeb_licDlPrbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_timephasemaxdeviationtdd = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationTdd', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    field_enodeb_timephasemaxdeviationsib16 = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationSib16', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_id                                     = models.CharField("Station ID", primary_key=True, max_length=45)
+    field_enodeb_stnnodes                               = models.CharField(db_column='field_enodeb_stnNodes', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
+    field_enodeb_tcunodes                               = models.CharField(db_column='field_enodeb_tcuNodes', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
+    field_enodeb_nnsfmode                               = models.CharField(db_column='field_enodeb_nnsfMode', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
+    field_enodeb_timephasemaxdeviation                  = models.CharField(db_column='field_enodeb_timePhaseMaxDeviation', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
+    field_enodeb_forcedsitunnelingactive                = models.CharField(db_column='field_enodeb_forcedSiTunnelingActive', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_pwspersistentstorage                   = models.CharField(db_column='field_enodeb_pwsPersistentStorage', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2whitelist                            = models.CharField(db_column='field_enodeb_x2WhiteList', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_upipaddressref                         = models.CharField(db_column='field_enodeb_upIpAddressRef', max_length=191, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary9                          = models.CharField(db_column='field_enodeb_zzzTemporary9', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_enodebplmnid                           = models.CharField(db_column='field_enodeb_eNodeBPlmnId', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary7                          = models.CharField(db_column='field_enodeb_zzzTemporary7', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_dscplabel                              = models.CharField(db_column='field_enodeb_dscpLabel', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary8                          = models.CharField(db_column='field_enodeb_zzzTemporary8', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_userlabel                              = models.CharField(db_column='field_enodeb_userLabel', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_rrcconnreestactive                     = models.CharField(db_column='field_enodeb_rrcConnReestActive', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary21                         = models.CharField(db_column='field_enodeb_zzzTemporary21', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary22                         = models.CharField(db_column='field_enodeb_zzzTemporary22', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2retrytimerstart                      = models.CharField(db_column='field_enodeb_x2retryTimerStart', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary25                         = models.CharField(db_column='field_enodeb_zzzTemporary25', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary26                         = models.CharField(db_column='field_enodeb_zzzTemporary26', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary23                         = models.CharField(db_column='field_enodeb_zzzTemporary23', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary24                         = models.CharField(db_column='field_enodeb_zzzTemporary24', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2setuptwowayrelations                 = models.CharField(db_column='field_enodeb_x2SetupTwoWayRelations', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_liccapdistrmethod                      = models.CharField(db_column='field_enodeb_licCapDistrMethod', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_timeandphasesynchcritical              = models.CharField(db_column='field_enodeb_timeAndPhaseSynchCritical', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_ulschedulerdynamicbwallocationenabled  = models.CharField(db_column='field_enodeb_ulSchedulerDynamicBWAllocationEnabled', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary2                          = models.CharField(db_column='field_enodeb_zzzTemporary2', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary1                          = models.CharField(db_column='field_enodeb_zzzTemporary1', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary3                          = models.CharField(db_column='field_enodeb_zzzTemporary3', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary6                          = models.CharField(db_column='field_enodeb_zzzTemporary6', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary10                         = models.CharField(db_column='field_enodeb_zzzTemporary10', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_s1retrytimer                           = models.CharField(db_column='field_enodeb_s1RetryTimer', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary5                          = models.CharField(db_column='field_enodeb_zzzTemporary5', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary11                         = models.CharField(db_column='field_enodeb_zzzTemporary11', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary12                         = models.CharField(db_column='field_enodeb_zzzTemporary12', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary13                         = models.CharField(db_column='field_enodeb_zzzTemporary13', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_randupdateinterval                     = models.CharField(db_column='field_enodeb_randUpdateInterval', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2ipaddrvias1active                    = models.CharField(db_column='field_enodeb_x2IpAddrViaS1Active', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary16                         = models.CharField(db_column='field_enodeb_zzzTemporary16', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_zzztemporary18                         = models.CharField(db_column='field_enodeb_zzzTemporary18', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_maxrandc                               = models.CharField(db_column='field_enodeb_maxRandc', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_sctpref                                = models.CharField(db_column='field_enodeb_sctpRef', max_length=191, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_minrandc                               = models.CharField(db_column='field_enodeb_minRandc', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_s1hodirdatapathavail                   = models.CharField(db_column='field_enodeb_s1HODirDataPathAvail', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_mfbisupport                            = models.CharField(db_column='field_enodeb_mfbiSupport', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_dnslookupontai                         = models.CharField(db_column='field_enodeb_dnsLookupOnTai', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_dnslookuptimer                         = models.CharField(db_column='field_enodeb_dnsLookupTimer', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2blacklist                            = models.CharField(db_column='field_enodeb_x2BlackList', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_initpreschedulingenable                = models.CharField(db_column='field_enodeb_initPreschedulingEnable', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_toutgoinghoexeccdma1xrtt               = models.CharField(db_column='field_enodeb_tOutgoingHoExecCdma1xRtt', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_csfbmeasfromidlemode                   = models.CharField(db_column='field_enodeb_csfbMeasFromIdleMode', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_enbid                                  = models.CharField(db_column='field_enodeb_eNBId', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_x2retrytimermaxauto                    = models.CharField(db_column='field_enodeb_x2retryTimerMaxAuto', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_biasthpwifimobility                    = models.CharField(db_column='field_enodeb_biasThpWifiMobility', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_releaseinactiveuesmploadlevel          = models.CharField(db_column='field_enodeb_releaseInactiveUesMpLoadLevel', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_dnsselections1x2ref                    = models.CharField(db_column='field_enodeb_dnsSelectionS1X2Ref', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_ts1hocanceltimer_field                 = models.CharField(db_column="field_enodeb_tS1HoCancelTimer'", max_length=45, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    field_enodeb_combcellsectorselectthreshrx           = models.CharField(db_column='field_enodeb_combCellSectorSelectThreshRx', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_combcellsectorselectthreshtx           = models.CharField(db_column='field_enodeb_combCellSectorSelectThreshTx', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_releaseinactiveuesinacttime            = models.CharField(db_column='field_enodeb_releaseInactiveUesInactTime', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_plmnbordernode                         = models.CharField(db_column='field_enodeb_plmnBorderNode', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_timephasemaxdeviationmbms              = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationMbms', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_timephasemaxdeviationotdoa             = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationOtdoa', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_liculbbpercentileconf                  = models.CharField(db_column='field_enodeb_licUlBbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_liculprbpercentileconf                 = models.CharField(db_column='field_enodeb_licUlPrbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_release                                = models.CharField(max_length=45, blank=True, null=True)
+    field_enodeb_licdlprbpercentileconf                 = models.CharField(db_column='field_enodeb_licDlPrbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_timephasemaxdeviationtdd               = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationTdd', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    field_enodeb_timephasemaxdeviationsib16             = models.CharField(db_column='field_enodeb_timePhaseMaxDeviationSib16', max_length=45, blank=True, null=True)  # Field name made lowercase.
     field_enodeb_timeandphasesynchalignment = models.CharField(db_column='field_enodeb_timeAndPhaseSynchAlignment', max_length=45, blank=True, null=True)  # Field name made lowercase.
     field_enodeb_mtrrewithoutneighboractive = models.CharField(db_column='field_enodeb_mtRreWithoutNeighborActive', max_length=45, blank=True, null=True)  # Field name made lowercase.
     field_enodeb_licdlbbpercentileconf = models.CharField(db_column='field_enodeb_licDlBbPercentileConf', max_length=45, blank=True, null=True)  # Field name made lowercase.
