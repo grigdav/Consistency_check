@@ -41,15 +41,26 @@ class Importer:
                                       )
         cursor = cnt.cursor()
         try:
-          info = {  'file' : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
-                  , 'table' : 'Dumper_enodebfunction'
+          info = {  'EnodeBfile'  : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
+                  , 'EnodeBtable' : 'Dumper_enodebfunction'
+                  , 'Admissfile'  : '/home/dave/Consistency_check/Dumper/Importer/Import_files/AdmissionControll.csv'
+                  , 'Admisstable' : 'Dumper_admissioncontroll'
           }
-          dm = '''LOAD DATA LOCAL INFILE '%(file)s' 
-                  INTO TABLE %(table)s 
-                  FIELDS TERMINATED BY ','
-                '''
-          query = dm % info 
-          cursor.execute(query)
+          EnodeB =  '''LOAD DATA LOCAL INFILE '%(EnodeBfile)s' 
+                        INTO TABLE %(EnodeBtable)s 
+                        FIELDS TERMINATED BY ', '
+                    '''
+          AdmissionControll = '''LOAD DATA LOCAL INFILE '%(Admissfile)s' 
+                                  INTO TABLE %(Admisstable)s 
+                                  FIELDS TERMINATED BY ', '
+
+                              '''
+          EnodeBquery = EnodeB % info
+          Admissquery = AdmissionControll % info
+
+
+          cursor.execute(EnodeBquery)
+          cursor.execute(Admissquery)
           cnt.commit()
           print('Successful import to Data base')
         except Exception:

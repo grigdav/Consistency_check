@@ -44,14 +44,14 @@ def run():
     #downloader.download()
     #parser.Node_info_Parser()
     parser.ENodeBFunction_main_info_parser()
-    #parser.AdmissionControll_parser()
+    parser.AdmissionControll_parser()
     #parser.CsvMerger()
     imp_er.ConnectChecker()
     imp_er.NodeInfoImporter()
 
 if __name__ == "__main__":
 
-    #run()
+    run()
     
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Consistency_check.settings")
 

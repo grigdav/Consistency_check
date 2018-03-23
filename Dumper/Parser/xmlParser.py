@@ -45,6 +45,7 @@ class XMLParser:
             matrix = [  node_id_list,
                         node_param_list
                         ]
+
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
                 current_node_id = firstchildren.attrib
                 simplified_node_id = current_node_id.get('id')
@@ -81,6 +82,16 @@ class XMLParser:
             # Создаем список с данными станци.
             Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/AdmissionControll.csv', 'w', newline='')
             admission_controll_param_list=[]
+            node_id_list =[]
+            matrix = [  node_id_list,
+                        admission_controll_param_list
+                        ]
+
+            for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
+                current_node_id = firstchildren.attrib
+                simplified_node_id = current_node_id.get('id')
+                node_id_list.append(simplified_node_id)
+
             for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataAdmissionControl'):
                 # создаем список элементов vsDataENodeBFunction.
                 admission_param =[]
@@ -90,7 +101,15 @@ class XMLParser:
                     admission_param.append(subelem.text)
                 #  и добавляем весь полученный список в главный список  (так как параметров в этом списке у нас будет много). 
                 admission_controll_param_list.append(admission_param)
-            Write.write('\n'.join(str(value) for value in admission_controll_param_list))
+
+            transposed = []
+            for i in range(len(matrix[0])):
+                new_row = []
+                for row in matrix:
+                    new_row.append(row[i])
+                transposed.append(new_row)
+
+            Write.write('\n'.join(str(value) for value in transposed))
             Write.close()
             print('DataAdmissionControl parameters parsed - normal')
         except IOError as error_out :
