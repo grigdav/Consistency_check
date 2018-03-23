@@ -51,7 +51,7 @@ def run():
 
 if __name__ == "__main__":
 
-    run()
+    #run()
     
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Consistency_check.settings")
 

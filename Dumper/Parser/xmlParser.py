@@ -31,40 +31,7 @@ class XMLParser:
         Write.close()
 
         print('Node ID parsed - normal')
-
-    '''def CsvMerger(self):
-        csvWithNodeIds = open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'r', newline='')        
-        csvWithENodeBFunctions = open ('/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv', 'r', newline='')
-
-        nodeIds = csv.reader(csvWithNodeIds)
-        eNodeBFunctions = csv.reader(csvWithENodeBFunctions)
-
-        # Мы точно знаем что количество строк в nodeIds совпадает с количеством строк в eNodeBFunctions
-        listForNodeIds = []
-        listForENodeBFunctions = []
-
-        # Превращаем первый дикт из первого CSV в список айдишников
-         for rowIndex1, nodeIdRow in enumerate(nodeIds, start=0):   # default is zero
-            for key1, nodeId in nodeIdRow.iteritems():
-                listForNodeIds.append([nodeId])
-        
-        # Превращем второй дикт из второго CSV в список пар ключ-значение
-        # где ключ - имя столбца а значение - это значение в данном столбце в этой строке
-        # Получаем список списков
-        for rowIndex2, eNodeBFunctionsRow in enumerate(eNodeBFunctions, start=0):   # default is zero
-            l = []
-            for key2, eNodeBFun in eNodeBFunctionsRow.iteritems():
-                l.append((key2, eNodeBFun))
-            listForENodeBFunctions.append(l)
-
-        # Бежим по второму списку списков чтобы добавить айдишники в начало соответствующего списка-элемента
-        # в итоге получаем список списков с полными данными
-        for ind, listForOneRow in enumerate(listForENodeBFunctions, start=0):   # default is zero
-            listForOneRow.insert(0, ('Node_id-header', listForNodeIds[ind]))
-
-        # превращаем тот список списков в дикт
-        ourFinalDict = listForENodeBFunctions to dict
-        writeThirdCSVFrom ourFinalDict '''        
+  
 
     def ENodeBFunction_main_info_parser(self):
         files_list = os.path.abspath(self._pathToXML)

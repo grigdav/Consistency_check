@@ -9,7 +9,6 @@
 from django.db import models
 #from django.core.validators import MaxValueValidator
 
-
 class ENodeBFunction(models.Model):
     field_enodeb_id                                     = models.CharField("Station ID", primary_key=True, max_length=45)
     field_enodeb_stnnodes                               = models.CharField(db_column='field_enodeb_stnNodes', max_length=45, blank=True, null=True, default='')  # Field name made lowercase.
