@@ -40,6 +40,11 @@ $ sudo pip3 install Django==1.9
 
 ```sudo apt-get install python-lxml```
 
+
+### Для запуска проекта пишем 
+
+```python3 manage.py runserver --noreload```
+
 ## Обзор структуры проекта
 
 * `Dumper` - Приложение для скачивания-парсинга и записи данных XML файла
