@@ -93,13 +93,9 @@ class XMLParser:
                 node_id_list.append(simplified_node_id)
 
             for elem in root.iter(tag ='{EricssonSpecificAttributes.17.28.xsd}vsDataAdmissionControl'):
-                # создаем список элементов vsDataENodeBFunction.
                 admission_param =[]
-                # спускаемся на уровень ниже
                 for subelem in elem:
-                    # добавляем полученную информацию в список
                     admission_param.append(subelem.text)
-                #  и добавляем весь полученный список в главный список  (так как параметров в этом списке у нас будет много). 
                 admission_controll_param_list.append(admission_param)
 
             transposed = []

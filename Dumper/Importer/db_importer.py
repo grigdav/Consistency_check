@@ -1,4 +1,5 @@
-
+import os
+import sys
 import mysql.connector
 from mysql.connector import errorcode
 import configparser
@@ -39,25 +40,26 @@ class Importer:
                                       ,database   = self._database
                                       ,use_pure   = False
                                       )
+        config = configparser.ConfigParser()
+        config.read('Dumper/Configs/dumper.ini')
         cursor = cnt.cursor()
         try:
-          info = {  'EnodeBfile'  : '/home/dave/Consistency_check/Dumper/Importer/Import_files/ENodeBFunction.csv'
-                  , 'EnodeBtable' : 'Dumper_enodebfunction'
-                  , 'Admissfile'  : '/home/dave/Consistency_check/Dumper/Importer/Import_files/AdmissionControll.csv'
-                  , 'Admisstable' : 'Dumper_admissioncontroll'
+          info = {  'EnodeBfile'  :  config['DATABASE']['ENodeBFile']
+                  , 'EnodeBtable' :  config['DATABASE']['ENodeBTable']
+                  , 'Admissfile'  :  config['DATABASE']['AdmissFile']
+                  , 'Admisstable' :  config['DATABASE']['AdmissTable']
           }
-          EnodeB =  '''LOAD DATA LOCAL INFILE '%(EnodeBfile)s' 
+          EnodeB =  ''' LOAD DATA LOCAL INFILE '%(EnodeBfile)s' 
                         INTO TABLE %(EnodeBtable)s 
                         FIELDS TERMINATED BY ', '
                     '''
-          AdmissionControll = '''LOAD DATA LOCAL INFILE '%(Admissfile)s' 
+          AdmissionControll = ''' LOAD DATA LOCAL INFILE '%(Admissfile)s' 
                                   INTO TABLE %(Admisstable)s 
                                   FIELDS TERMINATED BY ', '
 
                               '''
           EnodeBquery = EnodeB % info
           Admissquery = AdmissionControll % info
-
 
           cursor.execute(EnodeBquery)
           cursor.execute(Admissquery)
