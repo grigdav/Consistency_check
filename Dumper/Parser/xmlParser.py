@@ -9,32 +9,24 @@ class XMLParser:
     def __init__(self, pathToXML):
         self._pathToXML = pathToXML
 
-    def Node_info_Parser(self):
-    # Создаем функцию парсинга станций по ID станции.
-        files_list = os.path.abspath(self._pathToXML)
-        tree = ET.parse(files_list)
-        root = tree.getroot()
-            #Записываем вывод в файл
-        Write = open('/home/dave/Consistency_check/Dumper/Importer/Import_files/Node_ID.csv', 'w') 
-            #Создаем список
-        fieldnames = ['Node_id-header' , 'Node_parametrs-header']
-        node_id_list =[]
-        writer = csv.DictWriter(Write , fieldnames=fieldnames)
-
-        for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
-            current_node_id = firstchildren.attrib
-            simplified_node_id = current_node_id.get('id')
-            node_id_list.append(simplified_node_id)
-        
-        # Выводим построчный вывод
-        Write.write('\n'.join(str(value) for value in node_id_list))
-        Write.close()
-
-        print('Node ID parsed - normal')
-  
 
     def ENodeBFunction_main_info_parser(self):
-        files_list = os.path.abspath(self._pathToXML)
+
+        path = self._pathToXML
+
+        dir_list = [os.path.join(path, x) for x in os.listdir(path)]
+
+        if dir_list:
+            # Создадим список из путей к файлам и дат их создания.
+            date_list = [[x, os.path.getctime(x)] for x in dir_list]
+
+            # Отсортируем список по дате создания в обратном порядке
+            sort_date_list = sorted(date_list, key=lambda x: x[1], reverse=True)
+
+            # Выведем первый элемент списка. Он и будет самым последним по дате
+            last_xml_file =(sort_date_list[0][0])
+
+        files_list = os.path.abspath(last_xml_file)
         tree = ET.parse(files_list)
         root = tree.getroot()
         try:
@@ -44,7 +36,7 @@ class XMLParser:
             node_id_list =[]
             matrix = [  node_id_list,
                         node_param_list
-                        ]
+                     ]
 
             for firstchildren in root.findall('.//{genericNrm.xsd}MeContext'):
                 current_node_id = firstchildren.attrib
