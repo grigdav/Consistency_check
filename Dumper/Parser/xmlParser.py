@@ -59,7 +59,7 @@ class XMLParser:
                     new_row.append(row[i])
                 transposed.append(new_row)
 
-            Write.write('\n'.join(str(value) for value in transposed))
+            Write.write(',\n'.join(str([i[0], *i[-1]]) for i in transposed).replace("'", ""))
             Write.close()
             print('ENodeBFunction parameters parsed - normal')
         except IOError as error_out :
@@ -111,7 +111,8 @@ class XMLParser:
                     new_row.append(row[i])
                 transposed.append(new_row)
 
-            Write.write('\n'.join(str([i[0], *i[-1]]) for i in transposed))
+            Write.write(',\n'.join(str([i[0], *i[-1]]) for i in transposed).replace("'", ""))
+            #Write.write('\n')
             Write.close()
             print('DataAdmissionControl parameters parsed - normal')
         except IOError as error_out :
