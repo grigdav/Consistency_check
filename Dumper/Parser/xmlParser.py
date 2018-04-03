@@ -9,7 +9,6 @@ class XMLParser:
     def __init__(self, pathToXML):
         self._pathToXML = pathToXML
 
-
     def ENodeBFunction_main_info_parser(self):
 
         path = self._pathToXML
@@ -67,7 +66,22 @@ class XMLParser:
             print(error_out)        
 
     def AdmissionControll_parser(self):
-        files_list = os.path.abspath(self._pathToXML)
+
+        path = self._pathToXML
+
+        dir_list = [os.path.join(path, x) for x in os.listdir(path)]
+
+        if dir_list:
+            # Создадим список из путей к файлам и дат их создания.
+            date_list = [[x, os.path.getctime(x)] for x in dir_list]
+
+            # Отсортируем список по дате создания в обратном порядке
+            sort_date_list = sorted(date_list, key=lambda x: x[1], reverse=True)
+
+            # Выведем первый элемент списка. Он и будет самым последним по дате
+            last_xml_file =(sort_date_list[0][0])
+
+        files_list = os.path.abspath(last_xml_file)
         tree = ET.parse(files_list)
         root = tree.getroot()
         try:
@@ -97,7 +111,7 @@ class XMLParser:
                     new_row.append(row[i])
                 transposed.append(new_row)
 
-            Write.write('\n'.join(str(value) for value in transposed))
+            Write.write('\n'.join(str([i[0], *i[-1]]) for i in transposed))
             Write.close()
             print('DataAdmissionControl parameters parsed - normal')
         except IOError as error_out :
